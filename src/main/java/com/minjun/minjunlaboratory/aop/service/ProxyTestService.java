@@ -1,5 +1,6 @@
 package com.minjun.minjunlaboratory.aop.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,8 @@ public class ProxyTestService {
     
     @Autowired
     private TestService testService;
-    
+
+    @Transactional
     public String testNormalCall() {
         System.out.println("일반적인 호출 (Spring 컨테이너를 통한 프록시 사용)");
         return testService.doSomething();
