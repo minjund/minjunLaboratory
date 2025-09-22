@@ -1,23 +1,28 @@
 package com.minjun.minjunlaboratory.objectProgram.domain;
 
+import lombok.EqualsAndHashCode;
+
 import java.util.Arrays;
 
+@EqualsAndHashCode
 public class EqualsAndHashCodeExample {
-    private transient int transientVar = 10;
     private String name;
     private double score;
     private String[] tags;
     private int id;
+
+
 
     public String getName() {
         return this.name;
     }
 
     @Override public boolean equals(Object o) {
+        o.hashCode();
         if (o == this) return true;
         if (!(o instanceof EqualsAndHashCodeExample)) return false;
         EqualsAndHashCodeExample other = (EqualsAndHashCodeExample) o;
-        if (!other.canEqual((Object)this)) return false;
+        if (!other.canEqual(this)) return false;
         if (this.getName() == null ? other.getName() != null : !this.getName().equals(other.getName())) return false;
         if (Double.compare(this.score, other.score) != 0) return false;
         if (!Arrays.deepEquals(this.tags, other.tags)) return false;
